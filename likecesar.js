@@ -1,4 +1,37 @@
 // a função receberá texo e deslocamento para cifrar usando a cifra de césar
+function CifraZenit(texto) {
+    const z = ["Z","E","N","I","T","H"];
+    const P = ["P","O","L","A","R","U"];
+     // resultado irá representar o texto criptografado
+    // que estou montando letra a letra
+    let resultado = "";
+    // Transforma o texto recebido  todo em maiúsculas
+    texto = texto.toUpperCase();
+     // Converte o texto em um array de caracteres
+     texto = texto.split('');
+     // laço para cada letra em texto faça {}
+     texto.forEach((letra, index) => {
+        // se em alfabeto existe a letra 
+        if (Z.includes(letra)) {
+            resposta+= p.charAt(z.indexOf(letra));
+            // divido por 26 e pego o resto.
+           // novoindex representa a próxima posição + deslocamento, será usado para
+           // pegar a letra no alfabrto
+            let novoIndex = (idx + deslocamento) % 26;
+            // pega dentro do alfabero a nova letra baseando-se no novoindex
+            resultado += alfabeto[novoIndex];
+        } else {
+            // senão acha o caracter repete o caracter
+            resultado += letra;
+        }
+    });
+    return resultado;
+   };
+
+
+
+
+
 
 function CifradeCesar(texto, deslocamento) {
     const alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
