@@ -1,10 +1,62 @@
-// a função receberá texo e deslocamento para cifrar usando a cifra de césar
-function CifraZenit(texto) {
-    const z = ["Z","E","N","I","T","H"];
-    const P = ["P","O","L","A","R","U"];
-     // resultado irá representar o texto criptografado
-    // que estou montando letra a letra
+
+function Cifrazenit2(texto) {
+    // Transformar a string em um array de caracteres
+    let texto  = texto.split('');
     let resultado = "";
+    // Usar forEach para iterar sobre cada caractere
+    texto.forEach(letra => { // para cada caractere será usado uma estrutura switch
+        switch (letra.toUpperCase()) {
+            case 'Z':
+                resultado += 'P';
+                break;
+            case 'E':
+                resultado += 'O';
+                break;
+            case 'N':
+                resultado += 'L';
+                break;
+            case 'I':
+                resultado += 'A';
+                break;
+            case 'T':
+                resultado += 'R';
+                break;
+            case 'H':
+                resultado += 'U';
+                break;
+            case 'P':
+                resultado += 'Z';
+                break;
+            case 'O':
+                resultado += 'E';
+                break;
+            case 'L':
+                resultado += 'N';
+                break;
+            case 'A':
+                resultado += 'I';
+                break;
+            case 'R':
+                resultado += 'T';
+                break;
+            case 'U':
+                resultado += 'H';
+                break;
+                default:
+                resultado += letra;
+                break;
+        }
+    });
+    return resultado;
+}
+
+function CifraZenit1(texto) {
+    // correspondência Zenith Polaru usando dois arrays.
+    const Z = ["Z","E","N","I","T","H"];
+    const P = ["P","O","L","A","R","U"];
+     // resultadoado irá representar o texto criptografado
+    // que estou montando letra a letra
+    let resposta = "";
     // Transforma o texto recebido  todo em maiúsculas
     texto = texto.toUpperCase();
      // Converte o texto em um array de caracteres
@@ -13,32 +65,26 @@ function CifraZenit(texto) {
      texto.forEach((letra, index) => {
         // se em alfabeto existe a letra 
         if (Z.includes(letra)) {
-            resposta+= p.charAt(z.indexOf(letra));
-            // divido por 26 e pego o resto.
-           // novoindex representa a próxima posição + deslocamento, será usado para
-           // pegar a letra no alfabrto
-            let novoIndex = (idx + deslocamento) % 26;
-            // pega dentro do alfabero a nova letra baseando-se no novoindex
-            resultado += alfabeto[novoIndex];
-        } else {
-            // senão acha o caracter repete o caracter
-            resultado += letra;
-        }
-    });
-    return resultado;
-   };
-
-
-
-
+            resposta+= P.charAt(Z.indexOf(letra));
+        };
+        if (P.includes(letra)) {
+                resposta+= Z.charAt(P.indexOf(letra));
+        };
+        if (!Z.includes(letra) && !P.includes(letra)){
+            resposta+=letra;
+        };
+        });
+    return resposta;
+ };
 
 
 function CifradeCesar(texto, deslocamento) {
+    // a função receberá texo e deslocamento para cifrar usando a cifra de césar
     const alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
         "O","P","Q","R","S","T", "U","V","W","X","Y","Z"];
-    // resultado irá representar o texto criptografado
+    // resultadoado irá representar o texto criptografado
     // que estou montando letra a letra
-    let resultado = "";
+    let resultadoado = "";
     // Transforma o texto recebido  todo em maiúsculas
     texto = texto.toUpperCase();
      // Converte o texto em um array de caracteres
@@ -53,30 +99,15 @@ function CifradeCesar(texto, deslocamento) {
            // pegar a letra no alfabrto
             let novoIndex = (idx + deslocamento) % 26;
             // pega dentro do alfabero a nova letra baseando-se no novoindex
-            resultado += alfabeto[novoIndex];
+            resultadoado += alfabeto[novoIndex];
         } else {
             // senão acha o caracter repete o caracter
-            resultado += letra;
+            resultadoado += letra;
         }
     });
-    return resultado;
+    return resultadoado;
    };
 
-    // usando for tradicional passando posição a posição
-    /*for (let i = 0; i < texto.length; i++) {
-        let char = texto[i];
-
-        if (alfabeto.includes(char)) {
-            let index = alfabeto.indexOf(char);
-            let novoIndex = (index + deslocamento) % 26;
-            resultado += alfabeto[novoIndex];
-        } else {
-            resultado += char;
-        }
-    } */
-    //----------------------------------------------
-// Exemplo de uso recebendo a frase e criptografando-a-a-a
-// start é executado quando clicar na MOEDA DE CÉSAR
 function start(){
     // para ficar mais limpo primeiro criamos a variavel de deslocamento
     let deslocpadrao = 3;
@@ -85,7 +116,7 @@ function start(){
    let frase = document.getElementById("frase").value;
    // mostra no console o texto original
     console.log("Texto original: " + frase);
-    // mostra no console o texto resultante da 
+    // mostra no console o texto resultadoante da 
     // cifradecesar(frase,deslocpadrão)
     // eu chamo a função cifraDeCesar enviando frase e deslocpadrao
     console.log("Texto cifrado: " +  CifradeCesar(frase, deslocpadrao));
@@ -93,4 +124,16 @@ function start(){
   document.getElementById("frasecripto").textContent= CifradeCesar(frase, deslocpadrao);
     // este foi o primeiro teste via console
     // agora podemos usar os objetos de tela 
+};
+
+function startz(){
+    // para ficar mais limpo primeiro criamos a variavel de deslocamento
+    let deslocpadrao = 3;
+    // pedimos para o usuario a frase
+    //let frase = prompt("Forneça uma mensagem");
+   let frase = document.getElementById("frase").value;
+    console.log("Texto cifrado: " +  CifraZenit1(frase));
+  // saida pela pagina
+  document.getElementById("frasecripto").textContent= CifraZenit1(frase);
+   
 };
