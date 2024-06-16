@@ -1,7 +1,7 @@
 
-function Cifrazenit2(texto) {
+function CifraZenit2(texto) {
     // Transformar a string em um array de caracteres
-    let texto  = texto.split('');
+    texto  = texto.split('');
     let resultado = "";
     // Usar forEach para iterar sobre cada caractere
     texto.forEach(letra => { // para cada caractere será usado uma estrutura switch
@@ -65,10 +65,10 @@ function CifraZenit1(texto) {
      texto.forEach((letra, index) => {
         // se em alfabeto existe a letra 
         if (Z.includes(letra)) {
-            resposta+= P.charAt(Z.indexOf(letra));
+            resposta+= P[Z.indexOf(letra)];
         };
         if (P.includes(letra)) {
-                resposta+= Z.charAt(P.indexOf(letra));
+                resposta+= Z[P.indexOf(letra)];
         };
         if (!Z.includes(letra) && !P.includes(letra)){
             resposta+=letra;
@@ -132,8 +132,7 @@ function startz(){
     // pedimos para o usuario a frase
     //let frase = prompt("Forneça uma mensagem");
    let frase = document.getElementById("frase").value;
-    console.log("Texto cifrado: " +  CifraZenit1(frase));
-  // saida pela pagina
-  document.getElementById("frasecripto").textContent= CifraZenit1(frase);
+
+  document.getElementById("frasecripto").textContent= CifraZenit2(frase);
    
 };
