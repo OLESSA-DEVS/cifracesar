@@ -11,6 +11,15 @@ body {
     height: 99px;
     object-fit: cover;
 }
+.zenit-icon {
+    position: absolute;
+    top: 46px;
+    left: 00px;
+    width: 100px;
+    height: 180px;
+    
+}
+
 .titulo {
     position: absolute;
     top: 17px;
